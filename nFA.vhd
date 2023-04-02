@@ -1,0 +1,74 @@
+Library ieee;
+Use ieee.std_logic_1164.all;
+USE IEEE.numeric_std.all;
+ENTITY nFA  IS
+GENERIC (N:INTEGER:=16);
+PORT(
+A,B: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+MODE: IN STD_LOGIC:='0';--DEFAULTED TO ZERO i.e. Addition
+S: OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+Cout: OUT STD_LOGIC;
+VF: OUT STD_LOGIC;
+SF: OUT STD_LOGIC;
+CF: OUT STD_LOGIC;
+ZF: OUT STD_LOGIC
+);
+
+-- MODE: IN STD_LOGIC:='0');--NORMAL MODE IS ADDITION 
+END nFA;
+
+architecture ARC1 of nFA is
+    COMPONENT FA IS
+    PORT(
+    A,B:IN STD_LOGIC;
+    Cin: IN STD_LOGIC;
+    S,Cout: OUT STD_LOGIC);
+    END COMPONENT;
+
+COMPONENT n_NOR is
+GENERIC(N:INTEGER:=16);
+PORT ( INPUT: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+OUTPUT: OUT STD_LOGIC);
+END COMPONENT;
+
+SIGNAL CARRY: STD_LOGIC_VECTOR(N DOWNTO 0);
+SIGNAL XORWIRE: STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+SIGNAL tZF: STD_LOGIC;
+SIGNAL tS: STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+
+begin
+-- VARIABLE TZF1: STD_LOGIC:='1';
+NOR_ZF: n_NOR GENERIC MAP(N) PORT MAP(tS,tZF);
+CARRY(0)<=MODE;
+L1: FOR i in 0 to N-1 GENERATE 
+XORWIRE(i)<=B(i) XOR MODE; 
+FA_LOOP: FA PORT MAP (A(i),XORWIRE(i),CARRY(i),tS(i),CARRY(i+1));
+--NOTE: We assign both outputs to a signal (tS and CARRY) first and then we'll move them into the outputs(S and Cout)
+END GENERATE;
+-- second port map
+
+ZF<=tZF;
+S<=tS;
+Cout<=CARRY(N);
+VF<=CARRY(N-1) XOR CARRY(N);
+CF<=CARRY(N) XOR MODE;
+SF<=tS(N-1);
+-- PROCESS 
+-- BEGIN
+-- ZF_LOOP: FOR j IN 0 TO  N-1 LOOP
+-- tZF<=tZF NOR tS(j);
+-- END LOOP ZF_LOOP;
+-- ZF<=tZF;
+-- WAIT;--THIS LINE (AND THE WHOLE ZF) IS CAUSING A HEADACHE IN QUARTUS SYNTHESIS
+-- END PROCESS;
+-- PROCESS
+-- BEGIN
+-- l2: for j in 0 to N-1 loop
+-- tZF<=tZF nor tS(j);
+-- WAIT FOR 1 NS;
+--     end loop l2;
+-- -- ZF<=tZF;
+-- WAIT;
+-- END PROCESS;
+-- ZF<=tZF;
+end ARC1; --nFA	

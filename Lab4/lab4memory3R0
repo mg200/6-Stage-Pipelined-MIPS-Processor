@@ -1,0 +1,3 @@
+onerror resume
+add mem /integeratedunit/register_file/reg -a decimal -d binary
+add mem /integeratedunit/Inst_Cache_Component/RAM -a decimal -d binary

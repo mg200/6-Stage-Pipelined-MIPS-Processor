@@ -1,0 +1,407 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dE:/CMPN301/Lab4
+Edecoder_generic
+Z0 w1678140280
+Z1 DPx4 ieee 9 math_real 0 22 gNk<PdFJ<XNPcfef`f?Z81
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 7
+Z5 dE:/CMPN301/Pipelined_Processor
+Z6 8E:/CMPN301/Pipelined_Processor/decoder_generic.vhd
+Z7 FE:/CMPN301/Pipelined_Processor/decoder_generic.vhd
+l0
+L9 1
+VUEg2=bnaM6?>zBgaaEFNE2
+!s100 fm3^1gC]2=bVdZCV@;fS:3
+Z8 OV;C;2020.1;71
+32
+Z9 !s110 1678758306
+!i10b 1
+Z10 !s108 1678758305.000000
+Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|E:/CMPN301/Pipelined_Processor/decoder_generic.vhd|
+Z12 !s107 E:/CMPN301/Pipelined_Processor/decoder_generic.vhd|
+!i113 1
+Z13 o-work work -2002 -explicit
+Z14 tExplicit 1 CvgOpt 0
+Aarc
+R1
+R2
+R3
+R4
+DEx4 work 15 decoder_generic 0 22 UEg2=bnaM6?>zBgaaEFNE2
+!i122 7
+l19
+L18 14
+VS7^7RZ4`Ai1o1k7iRCZHj0
+!s100 oY:^]GJhhT>[n`__X9J301
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Pmytrialpackage
+R2
+R3
+R4
+!i122 14
+Z15 w1678558143
+R5
+Z16 8E:/CMPN301/Pipelined_Processor/mytrialPackage.vhd
+Z17 FE:/CMPN301/Pipelined_Processor/mytrialPackage.vhd
+l0
+L5 1
+VLIEPSJ1Ck8j@D=7jDaVbi1
+!s100 O<@c:nH38C6QjnSV3:l3]0
+R8
+32
+b1
+R9
+!i10b 1
+Z18 !s108 1678758306.000000
+Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|E:/CMPN301/Pipelined_Processor/mytrialPackage.vhd|
+Z20 !s107 E:/CMPN301/Pipelined_Processor/mytrialPackage.vhd|
+!i113 1
+R13
+R14
+Bbody
+Z21 DPx4 work 14 mytrialpackage 0 22 LIEPSJ1Ck8j@D=7jDaVbi1
+R2
+R3
+R4
+!i122 14
+l0
+L40 1
+VR;0o^]J:JMji5>Z=dzzUT3
+!s100 Q8SP0K8@aUk>:mNffi3082
+R8
+32
+R9
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R13
+R14
+En_and
+Z22 w1677940763
+R2
+R3
+R4
+!i122 8
+R5
+Z23 8E:/CMPN301/Pipelined_Processor/n_AND.vhd
+Z24 FE:/CMPN301/Pipelined_Processor/n_AND.vhd
+l0
+L5 1
+V^E6dL]bmb^LEBR?8TkTk13
+!s100 c[AobBGTIBni=z8I91l=T3
+R8
+32
+R9
+!i10b 1
+R18
+Z25 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|E:/CMPN301/Pipelined_Processor/n_AND.vhd|
+Z26 !s107 E:/CMPN301/Pipelined_Processor/n_AND.vhd|
+!i113 1
+R13
+R14
+Aarc
+R2
+R3
+R4
+DEx4 work 5 n_and 0 22 ^E6dL]bmb^LEBR?8TkTk13
+!i122 8
+l14
+L12 13
+VHGe?F?a[fJkXh0em=Qz8=0
+!s100 MZM1bagO_7KSTA?>a7U`22
+R8
+32
+R9
+!i10b 1
+R18
+R25
+R26
+!i113 1
+R13
+R14
+En_nor
+Z27 w1677962041
+R2
+R3
+R4
+!i122 9
+R5
+Z28 8E:/CMPN301/Pipelined_Processor/n_NOR.vhd
+Z29 FE:/CMPN301/Pipelined_Processor/n_NOR.vhd
+l0
+L5 1
+Vh?RBfSQ58X@@S=3R93i1<1
+!s100 Kd28di7PnKo4W8W8Ob`^B1
+R8
+32
+R9
+!i10b 1
+R18
+Z30 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|E:/CMPN301/Pipelined_Processor/n_NOR.vhd|
+Z31 !s107 E:/CMPN301/Pipelined_Processor/n_NOR.vhd|
+!i113 1
+R13
+R14
+Aarc
+R2
+R3
+R4
+DEx4 work 5 n_nor 0 22 h?RBfSQ58X@@S=3R93i1<1
+!i122 9
+l13
+L12 17
+V[67fS]8CLi:kHjkXM6o>P3
+!s100 2beQ0[W@6na_P_GbC;QoP0
+R8
+32
+R9
+!i10b 1
+R18
+R30
+R31
+!i113 1
+R13
+R14
+Enfa
+Z32 w1677876288
+R2
+R3
+R4
+!i122 10
+R5
+Z33 8E:/CMPN301/Pipelined_Processor/nFA.vhd
+Z34 FE:/CMPN301/Pipelined_Processor/nFA.vhd
+l0
+L4 1
+V`g@c;2]2aP5V:TQijklMe0
+!s100 ]7@?edOH[Q[bPA@IKAfLU2
+R8
+32
+R9
+!i10b 1
+R18
+Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|E:/CMPN301/Pipelined_Processor/nFA.vhd|
+Z36 !s107 E:/CMPN301/Pipelined_Processor/nFA.vhd|
+!i113 1
+R13
+R14
+Aarc1
+R2
+R3
+R4
+DEx4 work 3 nfa 0 22 `g@c;2]2aP5V:TQijklMe0
+!i122 10
+l39
+L20 55
+V2Q06cBNK]>Hm5ZJWJTCa02
+!s100 BInjYO>U4WH<WVBg0V?BO2
+R8
+32
+R9
+!i10b 1
+R18
+R35
+R36
+!i113 1
+R13
+R14
+Eram_generic
+Z37 w1678589145
+R21
+R1
+R2
+R3
+R4
+!i122 18
+R5
+Z38 8E:/CMPN301/Pipelined_Processor/RAM_generic.vhd
+Z39 FE:/CMPN301/Pipelined_Processor/RAM_generic.vhd
+l0
+L9 1
+VGD<gFVX>6VF3c@AY>5Ci13
+!s100 Ja_HH^IkA`X?Uf0RhgV9o2
+R8
+32
+Z40 !s110 1678758434
+!i10b 1
+Z41 !s108 1678758434.000000
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|E:/CMPN301/Pipelined_Processor/RAM_generic.vhd|
+Z43 !s107 E:/CMPN301/Pipelined_Processor/RAM_generic.vhd|
+!i113 1
+R13
+R14
+Aarc
+R21
+R1
+R2
+R3
+R4
+DEx4 work 11 ram_generic 0 22 GD<gFVX>6VF3c@AY>5Ci13
+!i122 18
+l52
+L27 55
+VdP1QKX6X>gzaBAz?VK>700
+!s100 k?mSPmBhDXEQ8M_7:aYKg1
+R8
+32
+R40
+!i10b 1
+R41
+R42
+R43
+!i113 1
+R13
+R14
+Esign_extension_unit
+Z44 w1678311912
+R1
+R2
+R3
+R4
+!i122 11
+R5
+Z45 8E:/CMPN301/Pipelined_Processor/Sign_Extension_Unit.vhd
+Z46 FE:/CMPN301/Pipelined_Processor/Sign_Extension_Unit.vhd
+l0
+L6 1
+Vjfa6omCM`8n0QSmk35=6_3
+!s100 85Fg:f^H1[]W=VgAPY01?0
+R8
+32
+R9
+!i10b 1
+R18
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|E:/CMPN301/Pipelined_Processor/Sign_Extension_Unit.vhd|
+Z48 !s107 E:/CMPN301/Pipelined_Processor/Sign_Extension_Unit.vhd|
+!i113 1
+R13
+R14
+Aarc
+R1
+R2
+R3
+R4
+DEx4 work 19 sign_extension_unit 0 22 jfa6omCM`8n0QSmk35=6_3
+!i122 11
+l17
+L15 19
+VPKzNdOc;NOI:PDWDmeSag0
+!s100 ZLU`Ll5k61FlIa:UjXddJ3
+R8
+32
+R9
+!i10b 1
+R18
+R47
+R48
+!i113 1
+R13
+R14
+Etb_rippleaddersubtractor
+Z49 w1677877009
+R2
+R3
+R4
+!i122 12
+R5
+Z50 8E:/CMPN301/Pipelined_Processor/tb_RippleAdderSubtractor.vhd
+Z51 FE:/CMPN301/Pipelined_Processor/tb_RippleAdderSubtractor.vhd
+l0
+L5 1
+VR?E56:^3h`Xf0^o2^RdQd1
+!s100 F8InFNA2bkN3]MZ@P9nbE0
+R8
+32
+R9
+!i10b 1
+R18
+Z52 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|E:/CMPN301/Pipelined_Processor/tb_RippleAdderSubtractor.vhd|
+Z53 !s107 E:/CMPN301/Pipelined_Processor/tb_RippleAdderSubtractor.vhd|
+!i113 1
+R13
+R14
+Aarch
+R2
+R3
+R4
+DEx4 work 24 tb_rippleaddersubtractor 0 22 R?E56:^3h`Xf0^o2^RdQd1
+!i122 12
+l27
+L9 61
+VP@eeZOETP2=JWl?dgMBHZ3
+!s100 4j2b<HTJY4:EKie65`_Yl0
+R8
+32
+R9
+!i10b 1
+R18
+R52
+R53
+!i113 1
+R13
+R14
+Etb_sign_extension_unit
+Z54 w1678758489
+R2
+R3
+R4
+!i122 22
+R5
+Z55 8E:/CMPN301/Pipelined_Processor/tb_Sign_Extension_Unit.vhd
+Z56 FE:/CMPN301/Pipelined_Processor/tb_Sign_Extension_Unit.vhd
+l0
+L5 1
+VozjPWZe1PXHCHCJm;9H[e3
+!s100 j[gdOCh<3BVS3e`TU6ago3
+R8
+33
+Z57 !s110 1678759790
+!i10b 1
+Z58 !s108 1678759790.000000
+Z59 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|E:/CMPN301/Pipelined_Processor/tb_Sign_Extension_Unit.vhd|
+Z60 !s107 E:/CMPN301/Pipelined_Processor/tb_Sign_Extension_Unit.vhd|
+!i113 1
+Z61 o-work work -2008 -explicit
+R14
+Aarc
+R2
+R3
+R4
+Z62 DEx4 work 22 tb_sign_extension_unit 0 22 ozjPWZe1PXHCHCJm;9H[e3
+!i122 22
+l27
+Z63 L11 34
+Z64 VmMVZHObOGf:[d[Ch:fL<N2
+Z65 !s100 Nh[ROITQ;djL7ZAl3o@902
+R8
+33
+R57
+!i10b 1
+R58
+R59
+R60
+!i113 1
+R61
+R14

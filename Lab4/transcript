@@ -1,0 +1,22 @@
+# Compile of A_REGISTER.vhd was successful.
+# Compile of array_RegisterFile.vhd was successful.
+# Compile of decoder_generic.vhd was successful.
+# Compile of N_Bit_Counter.vhd was successful.
+# Compile of ALU.vhd was successful.
+# Compile of tb_ALU.vhd was successful.
+# Compile of MUX_2X1_GENERIC.vhd was successful.
+# Compile of partA.vhd was successful.
+# Compile of partB.vhd was successful.
+# Compile of partC.vhd was successful.
+# Compile of partD.vhd was successful.
+# Compile of FullAdder_Generic.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of tb_partA.vhd was successful.
+# Compile of FullAdder.vhd was successful.
+# Compile of mytrialPackage.vhd was successful.
+# Compile of RAM_generic.vhd was successful.
+# Compile of IntegratedUnit.vhd was successful.
+# Compile of CONTROLLER.vhd was successful.
+# Compile of MEM_WB.vhd was successful.
+# Compile of Buffer.vhd was successful.
+# 21 compiles, 0 failed with no errors.

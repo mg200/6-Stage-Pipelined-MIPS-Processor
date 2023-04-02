@@ -1,0 +1,2 @@
+onerror resume
+add mem /integeratedunit/Inst_Cache_Component/RAM -a decimal -d binary
