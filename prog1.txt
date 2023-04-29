@@ -1,0 +1,9 @@
+ldm r1,34
+iadd r1,r5,90
+iadd r1,r6,45
+ldm r5,67
+add r1,r5,r5
+iadd r1,r4,45
+push r1 
+.org 100
+call r2
