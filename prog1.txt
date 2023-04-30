@@ -1,9 +1,12 @@
-ldm r1,34
-iadd r1,r5,90
-iadd r1,r6,45
-ldm r5,67
-add r1,r5,r5
-iadd r1,r4,45
-push r1 
 .org 100
-call r2
+add r1, r5,r5
+or r5,r6,r7
+iadd r1,r5,890
+not r1,r5
+.org 20
+add r7,r7,r7
+not r4,r5
+.org 30
+not r1,r6
+iadd r1,r6,91
+mov r1,r5
