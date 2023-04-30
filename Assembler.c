@@ -10,8 +10,9 @@ int main(int argc, char*argv[]){
 FILE*file;
 FILE*outputfile;
 char*FileName=argv[1];
+printf("argv[1]%s\n",argv[1]);
 char*outputFileName="output.txt";
-outputfile=fopen(outputFileName,"wr");
+outputfile=fopen(outputFileName,"r++");
 char buffer[MAX_LINE];
 // for(int i=0;i<100;i++)buffer[i]='\t';
 file=fopen(FileName,"r");//input file, open for reading
@@ -20,7 +21,8 @@ if(file==NULL){
 return 0;
 }
 long previousPosition=0,currentPosition=0;
-int currentinputline=1,currentoutputline=1;
+int currentinputline=0,currentoutputline=0;
+fseek(outputfile,0,SEEK_SET);
 do{
 previousPosition=ftell(file);//the cursor position of the line that after this line will be stored in buffer
 fgets(buffer,MAX_LINE,file);
@@ -30,7 +32,16 @@ char *p = buffer;
 while (isspace((unsigned char )*p)) ++p;
 if ( *p != '\0' )  /* the string is empty */ //check that the string is not empty  
 {
-    // currentoutputline++;//original place
+//first verify it's not a numeric value 
+
+if((buffer[0]>=48&&buffer[0]<=57)||(buffer[0]>=65&&buffer[0]<=70)||(buffer[0]>=97&&buffer[0]<=102)){
+    char xtra[5];
+DigitConverter(buffer,strlen(buffer),4,xtra);
+printf("-------------------extra buffer is %s-------\n",xtra);   
+HextoBin(outputfile,xtra);
+currentoutputline++;
+continue;
+}
     converttoUpper(buffer,sizeof(buffer));//converting all to upper case
     trimleadingandTrailing(buffer);//trimming leading and trailing white space
     cleanString(buffer);
@@ -44,8 +55,9 @@ buffer[2]=='R'&&
 buffer[3]=='G'){
     handleOrg(outputfile,buffer,previousPosition,currentPosition,&currentoutputline);
     continue;
+ 
 };
-printf("%s",buffer);
+// printf("%s",buffer);
 // printf("%d",buffer[3]);
 Parse(outputfile,buffer);
 currentoutputline++;
@@ -88,7 +100,7 @@ fprintf(writeto,"01100");
 return;
 }else if(string[3]=='D'){//IADD
     TrimWhiteSpaces(string+5);
-printf("Full Trim %s\n",string);
+// printf("Full Trim %s\n",string);
 fprintf(writeto,"10010");
     ParseOpIType(writeto,string,6);
     char hex[5];
@@ -110,13 +122,13 @@ fprintf(writeto,"10010");
 //   --j;
 // }
 // printf("\nhex value for IADD is %s\n",hex);
-    printf("length of buffer is %zu and what's in buffer %s",strlen(string),string);
+    // printf("length of buffer is %zu and what's in buffer %s",strlen(string),string);
 for(int o=11;o<15;o++)if(string[o]<48||string[o]>57)string[o]='\0';
 char c; int i=0;
 c=string[11];
 int counterlen=7;
     while(c!='\0'){
-    printf("at i=%d c=%c\n",i,c);
+    // printf("at i=%d c=%c\n",i,c);
     hex[i]=c;
     i++;
     c=string[11+i];
@@ -134,7 +146,7 @@ printf("%s",hex);
 }
 else if(string[3]==' '){
 TrimWhiteSpaces(string+4);
-printf("Full Trim %s\n",string);
+// printf("Full Trim %s\n",string);
 for(int i=0;i<4;i++)instructionString[i]=string[i];
 if(strcmp(instructionString,"LDD ")==0){//strcmp returns 0 when equal
 fprintf(writeto,"00110");
@@ -194,7 +206,7 @@ else if(strcmp(instructionString,"JMP ")==0){
 else if(string[2]==' '&&string[3]!=' ')
 {
 TrimWhiteSpaces(string+3);
-printf("Full Trim %s\n",string);
+// printf("Full Trim %s\n",string);
 for(int i=0;i<3;i++)instructionString[i]=string[i];
  if(strcmp(instructionString,"OR ")==0){
     fprintf(writeto,"10100");
@@ -352,8 +364,10 @@ else if(strcmp(tempStr,"R7")==0){
 fprintf(writeto,"111");
 }
 }
-
+int prevOrg=0;
 void handleOrg(FILE*file,char*buffer,long prev,long current,int* currentline){
+
+
 
     printf("currentline is %d\n",*currentline);
 char tempStr[5]="0000\0";
@@ -367,41 +381,55 @@ for(i=3;i>=0&&j>4;j--){
 }
     // printf("in handleOrg: tempStr is %s\n",tempStr);
     int num=HextoDec(tempStr);
+*currentline=num;
+fseek(file,num*17,SEEK_SET);
+return;
+// new trial
     if(num>*currentline){
     int counter=*currentline;
-        fseek(file,0,SEEK_CUR);
+        fseek(file,0,SEEK_SET);
+    counter=0;
     while(counter<num){
-        fprintf(file,"0000000000000000\n");
+        // fprintf(file,"0000000000000000\n");
+        // char useless[17];
+        // fgets(useless,17,file);
+        // printf("ueseless %s\n",useless);
+        fseek(file,17*counter+1,SEEK_SET);
+        
     counter++;
-    // *++currentline;
-    // printf("inside loop:current line is %d\n",*currentline);
-    // if (*currentline==32){
-    // long f=ftell(file);
-    // printf("line is 32 and pos is %ld",f);
-    // }
+
     }
     *currentline=num;    
+    prevOrg=num;
     }else{
-printf("num %d < currentline %d",num,*currentline);
+printf("num %d < currentline %d\n",num,*currentline);
         printf("-------HELLOS-----,current lines is %d and file pointer at %ld--\n",*currentline,ftell(file));
         int counter=0;
         long currentPosition=0;//=currentline;
         fseek(file,0,SEEK_SET);
-        // *currentline=0;
+        *currentline=0;
         char uselessbuffer[17];
+        if(num==0){fseek(file,0,SEEK_SET);*currentline=0;return;}
+        if(prevOrg>num)num-=1;
         while(counter<num){
             fgets(uselessbuffer,MAX_LINE,file);
             // fscanf(file,"%s",uselessbuffer);
-            getline2(uselessbuffer,20,file);
-            printf("uselessbuffer: %s\n",uselessbuffer);
-            static char dataRead[1000]={0};
-            fread(dataRead,1000,1,file);
+            // getline2(uselessbuffer,20,file);
+            // printf("uselessbuffer: %s\n",uselessbuffer);
+            // static char dataRead[1000]={0};
+            // fread(dataRead,1000,1,file);
+            if(counter>0)fseek(file,17*(counter-1),SEEK_SET);
         counter++;
         currentPosition=ftell(file);
-        printf("currentpos is %ld\n",currentPosition);
+        // printf("currentpos is %ld\n",currentPosition);
         }
+    prevOrg=num;
         *currentline=num;
-        fseek(file,17*(num-1),SEEK_SET);
+        if(num==0){
+            fseek(file,0,SEEK_SET);
+            return;
+        };
+        fseek(file,17*(num),SEEK_SET);
         /*why fseek(file,17*(num-1),SEEK_SET);
         each line in the file(the output file I'm now in) is 16 bits, so the pointer is incremented 17 at each line
         (it now stands at the next line)
@@ -426,19 +454,19 @@ return;//no idea why, but when the code written in PrintNumber function from dow
 }
 void PrintNumber(FILE*handle,char*buffer){
     char hex[5]="0000\0";
-printf("length of buffer is %zu",strlen(buffer));
+// printf("length of buffer is %zu",strlen(buffer));
 for(int o=7;o<11;o++)if(buffer[o]<48||buffer[o]>57)buffer[o]='\0';
 char c; int i=0;
 c=buffer[7];
 int counterlen=7;
 // while(counterlen<strlen(buffer)){
     while(c!='\0'){
-    printf("at i=%d c=%c\n",i,c);
+    // printf("at i=%d c=%c\n",i,c);
     hex[i]=c;
     i++;
     c=buffer[7+i];
 }
-printf("hex is for LDM %s and hex[0]=%c and i=%d\n",hex,hex[0],i);
+// printf("hex is for LDM %s and hex[0]=%c and i=%d\n",hex,hex[0],i);
 int k=0;
 for(int m=i;m<4;m++,k++)
     for(int j=i;j>0;j--)hex[j+k]=hex[j+k-1];
@@ -450,6 +478,7 @@ HextoBin(handle,hex);
 void HextoBin(FILE*writeto,char hexString[4])
 {
     for(int i=0;i<4;++i){
+        // printf("current char in HextoBin is %c\n",hexString[i]);
         switch (hexString[i])
         {
         case '0':
@@ -550,10 +579,6 @@ void cleanString(char*string){
 
 int HextoDec(char*hex){
 
-
-        // printf("%s",hex);
-    // fflush(stdin);
-    // fgets(hex,ARRAY_SIZE,stdin);
      int decimal = 0;
      long long base = 1;
     int i = 0, value, length;

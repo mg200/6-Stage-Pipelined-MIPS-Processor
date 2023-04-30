@@ -6,7 +6,7 @@ FILE*inputfile;
 FILE*samplefile;
 FILE*outputfile;
 inputfile=fopen("output.txt","r");
-     samplefile=fopen("asm3.mem","r");
+     samplefile=fopen("sample2.mem","r");
      outputfile=fopen("final.mem","w");
     //  fseek(file, 0, SEEK_SET);
     // fscanf(ofile, "%*[^\n]"); // skip first line
@@ -35,10 +35,31 @@ num_of_instructions++;
 
 char array[74];
 int firsttime=0;
-for(int i=0;i<num_of_instructions;i++){
+// for(int i=0;i<num_of_instructions;i++){
+//     // fgets(instruction,16,inputfile);
+//     fscanf(inputfile,"%s",instruction);
+//     printf("instruction %s\n",instruction);
+// fgets(buffer,25,samplefile);
+// int j=0;
+// for(int i=6;i<22;i++){
+//     buffer[i]=instruction[j];
+//     j++;
+// }
+// fprintf(outputfile,"%s",buffer);
+// }
+
+// // return 0;
+// for(int i=0;i<1024-num_of_instructions;i++){
+// fgets(buffer,25,samplefile);
+//     fprintf(outputfile,"%s",buffer);
+// }
+
+
+// for(int i=0;i<num_of_instructions;i++){
+    while(!feof(inputfile)){
     // fgets(instruction,16,inputfile);
     fscanf(inputfile,"%s",instruction);
-    printf("instruction %s\n",instruction);
+    // printf("instruction %s\n",instruction);
 fgets(buffer,25,samplefile);
 int j=0;
 for(int i=6;i<22;i++){
@@ -46,12 +67,6 @@ for(int i=6;i<22;i++){
     j++;
 }
 fprintf(outputfile,"%s",buffer);
-}
-
-// return 0;
-for(int i=0;i<1024-num_of_instructions;i++){
-fgets(buffer,25,samplefile);
-    fprintf(outputfile,"%s",buffer);
 }
 
 }

@@ -40,7 +40,7 @@ char*DigitConverter(char*start,int size,int req_digits,char*buffer){
     for(int i=0;i<req_digits+1;i++)buffer[i]='\0';
 size_t len=strlen(start);
 // printf("length of buffer is %zu",len);
-for(int i=0;i<(int)len;i++)if(start[i]<48||start[i]>57)start[i]='\0';
+for(int i=0;i<(int)len;i++)if(!((start[i]>=48&&start[i]<=57)||(start[i]>=65&&start[i]<=70)||(start[i]>=97&&start[i]<=102)))start[i]='\0';
 char c; int i=0;
 c=start[0];
     while(c!='\0'){
@@ -53,7 +53,7 @@ int k=0;
 for(int m=i;m<req_digits;m++,k++)
     for(int j=i;j>0;j--)buffer[j+k]=buffer[j+k-1];
 for(int l=0;l<req_digits-i;l++)buffer[l]='0';
-printf("%s\n",buffer);
+// printf("%s\n",buffer);
 }
 char *getline2(char *buf, int size, FILE *fp)
 {
