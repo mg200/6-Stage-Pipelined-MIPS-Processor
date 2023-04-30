@@ -3,9 +3,10 @@
 
 
 int main(int argc, char*argv[]){
-    // char hex1[5]="10ff\0";
-    // HextoDec(hex1);
-    // // return 1;
+// char a[100]="110201923";
+// char buffer1[17];
+// DigitConverter(a,strlen(a),16,buffer1);
+//     return 0;
 FILE*file;
 FILE*outputfile;
 char*FileName=argv[1];
@@ -19,7 +20,7 @@ if(file==NULL){
 return 0;
 }
 long previousPosition=0,currentPosition=0;
-int currentinputline,currentoutputline=1;
+int currentinputline=1,currentoutputline=1;
 do{
 previousPosition=ftell(file);//the cursor position of the line that after this line will be stored in buffer
 fgets(buffer,MAX_LINE,file);
@@ -29,14 +30,10 @@ char *p = buffer;
 while (isspace((unsigned char )*p)) ++p;
 if ( *p != '\0' )  /* the string is empty */ //check that the string is not empty  
 {
-    currentoutputline++;
+    // currentoutputline++;//original place
     converttoUpper(buffer,sizeof(buffer));//converting all to upper case
     trimleadingandTrailing(buffer);//trimming leading and trailing white space
     cleanString(buffer);
-    // printf("cleaned %s",buffer);
-    // TrimWhiteSpaces(buffer+5);
-    // printf("whole cleaned%s",buffer);
-    // return 1;
     //at this point the string is clean, we now need to do two more checks
     //1. that it's not a commented line
 if (buffer[0]=='#')continue;
@@ -51,6 +48,7 @@ buffer[3]=='G'){
 printf("%s",buffer);
 // printf("%d",buffer[3]);
 Parse(outputfile,buffer);
+currentoutputline++;
 }
 }while(!feof(file));
   
@@ -375,33 +373,45 @@ for(i=3;i>=0&&j>4;j--){
     while(counter<num){
         fprintf(file,"0000000000000000\n");
     counter++;
-    *currentline++;
-    if (*currentline==32){
-    long f=ftell(file);
-    printf("line is 32 and pos is %ld",f);
+    // *++currentline;
+    // printf("inside loop:current line is %d\n",*currentline);
+    // if (*currentline==32){
+    // long f=ftell(file);
+    // printf("line is 32 and pos is %ld",f);
+    // }
     }
-    }
-    // *currentline=num;    
+    *currentline=num;    
     }else{
-        // return;
-        printf("-------HELLOS-----,current lines is %d---\n",*currentline);
+printf("num %d < currentline %d",num,*currentline);
+        printf("-------HELLOS-----,current lines is %d and file pointer at %ld--\n",*currentline,ftell(file));
         int counter=0;
         long currentPosition=0;//=currentline;
         fseek(file,0,SEEK_SET);
+        // *currentline=0;
         char uselessbuffer[17];
-        while(counter<*currentline){
-            fgets(uselessbuffer,17,file);
+        while(counter<num){
+            fgets(uselessbuffer,MAX_LINE,file);
+            // fscanf(file,"%s",uselessbuffer);
+            getline2(uselessbuffer,20,file);
+            printf("uselessbuffer: %s\n",uselessbuffer);
+            static char dataRead[1000]={0};
+            fread(dataRead,1000,1,file);
         counter++;
         currentPosition=ftell(file);
+        printf("currentpos is %ld\n",currentPosition);
         }
-        fseek(file,currentPosition,SEEK_SET);
+        *currentline=num;
+        fseek(file,17*(num-1),SEEK_SET);
+        /*why fseek(file,17*(num-1),SEEK_SET);
+        each line in the file(the output file I'm now in) is 16 bits, so the pointer is incremented 17 at each line
+        (it now stands at the next line)
+        and if I want to position myself at, say, line 10 from the beginning I can use fseek with SEEK_SET and the position
+        is 17 (the value the pointer's incremented each step) multiplied by (the line I want to reach -1) 
+        why -1? because the fseek considers numbering from 0, while most text editors (like VSCode) start numbering from 1*/ 
     }
 // printf("\n%d\n",num);
 }
-// printf("buffer[4]=%c\n",buffer[4]);
-    // printf("buffer[5]=%c\n",buffer[5]);
-    // printf("tempStr[0]=%c\n",tempStr[0]);
-    // printf("tempStr[1]=%c\n",tempStr[1]);
+
 void LDM_Handle(FILE*writeto,char*buffer)
 { 
     
@@ -416,19 +426,6 @@ return;//no idea why, but when the code written in PrintNumber function from dow
 }
 void PrintNumber(FILE*handle,char*buffer){
     char hex[5]="0000\0";
-    // printf("in PrintNumber %c\n",hex[3]);
-// int j=10,i=3;int dontsetzero=0;
-// while(j>6){
-//     printf("buffer[%d] is %c\n",j,buffer[j]);
-// //    if(buffer[j]!='\n' &&buffer[j]!='\0'&&buffer[j]!=' '&&buffer[j]!='\t')
-//  if(isblank(buffer[j])!=0)
-//  {
-//     printf("from inside buffer[%d] is %c\n",j,buffer[j]);
-//      hex[i]=buffer[j];
-//   --i;
-// }
-//   --j;
-// }
 printf("length of buffer is %zu",strlen(buffer));
 for(int o=7;o<11;o++)if(buffer[o]<48||buffer[o]>57)buffer[o]='\0';
 char c; int i=0;
