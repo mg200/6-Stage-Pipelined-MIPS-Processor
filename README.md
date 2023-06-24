@@ -9,5 +9,5 @@ Before swapping,
 
 
 After swapping,
-![image](https://github.com/mg200/6-Stage-Pipelined-MIPS-Processor/assets/104623598/c51353dc-c76f-4076-b902-cd9f1a75cf89)
 
+![image](https://github.com/mg200/6-Stage-Pipelined-MIPS-Processor/assets/104623598/e088a5e6-8859-499d-a87c-6227b1cb349d)
