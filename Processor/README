@@ -1,9 +1,9 @@
 This project is a 6-stage pipelined MIPS, RISC-V, in-order, single-issue processor. It is based on the the standard MIPS, except its a 16-bit procesor and the data memory(cache) is divided into 2 stages, M1 and M2. Data is written to the memory
-in the first stage M1, while performing data is only available at M2; this means that loaded data (Load,LDD, instruction is only available after M2).
+in the first stage M1, while reading data would make it available only after M2; this means that loaded data (Load,LDD, instruction is only available after M2).
 
 The processor has 8 16-bit general purpose registers(R0->R7), a Flag Register (Condition Code Register, CCR), PC,and SP. 
 
-The data cache is 1024 long and 16-bits wides, a total size of 2 MB. The Stack Pointer (SP) is initialized to 2^10-1 (1024-), 1023,and points to the top of the stack.
+The data cache is 1024 long and 16-bits wide, a total size of 2 MB. The Stack Pointer (SP) is initialized to 2^10-1 (1024-), 1023,and points to the top of the stack.
 
 Any program MUST be initialized with the RESET signal; upon Reset, the processor loads the Reset Address (address of the first line of code) from address #0 from the instruction cache(M[0]) into
 the PC and begins execution from there.
